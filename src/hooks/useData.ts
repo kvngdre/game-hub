@@ -15,7 +15,10 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps: 
   useEffect(() => {
     const controller = new AbortController();
 
+    // Effect does not depend on isLoading state
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoading(true);
+
     apiClient
       .get<FetchResponse<T>>(endpoint, { ...requestConfig, signal: controller.signal })
       .then((response) => {
