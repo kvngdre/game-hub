@@ -16,7 +16,6 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps: 
     const controller = new AbortController();
 
     // Effect does not depend on isLoading state
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoading(true);
 
     apiClient
@@ -39,6 +38,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps: 
     // });
 
     return () => controller.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps]);
 
   return { data, error, isLoading };

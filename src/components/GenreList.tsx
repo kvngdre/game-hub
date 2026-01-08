@@ -1,4 +1,4 @@
-import { Button, Heading, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react";
+import { Button, Heading, HStack, Image, List, ListItem } from "@chakra-ui/react";
 import useGenres, { type Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
@@ -8,11 +8,7 @@ interface GenreListProps {
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: GenreListProps) => {
-  const { genres, isLoading, error } = useGenres();
-
-  if (error) return null;
-
-  if (isLoading) return <Spinner />;
+  const { genres } = useGenres();
 
   return (
     <>
